@@ -1,70 +1,65 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, StatusBar, Pressable } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { getSeriesNumbers, mainNumbersEuromillions,starNumberEuromillions } from '@/utils/randomNumber';
+import {Text , View , Button} from "react-native"
+import GridComponent from '@/components/GridComponent';
+import { EUROMILLIONS_MAX_MAIN, EUROMILLIONS_MAX_STAR, EUROMILLIONS_MIN_MAIN, EUROMILLIONS_MIN_STAR, LOTO_MAX_MAIN, LOTO_MIN_MAIN } from '@/constants/numbers';
+import { useState } from 'react';
 
 export default function HomeScreen() {
+
+  const [mainNumbersEuromillionsState, setMAinNumbersEuromillions ] = useState<number[]>(mainNumbersEuromillions)
+  const [starNumbersEuromillionsState , setStarNumberEuromillions] = useState<number[]>(starNumberEuromillions)
+
+  const handlePress = ()=>{
+     setMAinNumbersEuromillions(getSeriesNumbers(5,EUROMILLIONS_MIN_MAIN, EUROMILLIONS_MAX_MAIN))
+     setStarNumberEuromillions(getSeriesNumbers(2,EUROMILLIONS_MIN_STAR, EUROMILLIONS_MAX_STAR))
+    console.log("Bonjour")
+  }
+
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome Ophelie 2!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">STEP 1 :bonjour oualaboulai</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: belle epine</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: dormir à l'hotel</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example 2</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+          <View style={styles.container} >
+            <StatusBar barStyle={"dark-content"} backgroundColor={"#ffffff" } />
+            <View style={styles.containerAfterTopBAr}>
+         <Text style={{color:"red"}}>Résultats euromillions</Text>
+          <Text>Tirage principal {mainNumbersEuromillionsState.join("-")}</Text>
+          <Text>Torage étoiles {starNumbersEuromillionsState.join("-")}</Text>
+          <Pressable style={styles.button} onPress={handlePress} >
+            <Text style={styles.textButton}>{"Réinitialiser Euromillions 323".toUpperCase()}</Text>
+          </Pressable>
+        <GridComponent min={LOTO_MIN_MAIN} max={LOTO_MAX_MAIN}/>
+          </View>
+  
+
+         </View>
+
+ 
+    
+
   );
 }
 
+
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+container:{
+ 
+},
+containerAfterTopBAr:{
+  paddingTop:StatusBar.currentHeight
+},
+button:{
+  width:"50%",
+  alignItems:"center",
+
+  backgroundColor:"blue",
+  color:"white",
+},
+textButton:{
+color:"white"
+}
 });
