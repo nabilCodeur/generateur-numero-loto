@@ -9,6 +9,7 @@ import {Text , View , Button} from "react-native"
 import GridComponent from '@/components/GridComponent';
 import { EUROMILLIONS_MAX_MAIN, EUROMILLIONS_MAX_STAR, EUROMILLIONS_MIN_MAIN, EUROMILLIONS_MIN_STAR, LOTO_MAX_MAIN, LOTO_MIN_MAIN } from '@/constants/numbers';
 import { useState } from 'react';
+import ResultSerie from '@/components/ResultSerie';
 
 export default function HomeScreen() {
 
@@ -29,10 +30,12 @@ export default function HomeScreen() {
          <Text style={{color:"red"}}>Résultats euromillions</Text>
           <Text>Tirage principal {mainNumbersEuromillionsState.join("-")}</Text>
           <Text>Torage étoiles {starNumbersEuromillionsState.join("-")}</Text>
-          <Pressable style={styles.button} onPress={handlePress} >
+        
+        <GridComponent min={LOTO_MIN_MAIN} max={LOTO_MAX_MAIN}/>
+        <Pressable style={styles.button} onPress={handlePress} >
             <Text style={styles.textButton}>{"Réinitialiser Euromillions 323".toUpperCase()}</Text>
           </Pressable>
-        <GridComponent min={LOTO_MIN_MAIN} max={LOTO_MAX_MAIN}/>
+        <ResultSerie listMain={mainNumbersEuromillions} listStar={starNumberEuromillions}></ResultSerie>
           </View>
   
 
@@ -47,7 +50,7 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
 container:{
- 
+ margin:10
 },
 containerAfterTopBAr:{
   paddingTop:StatusBar.currentHeight

@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         justifyContent:"space-around",
         flexWrap:"wrap",
-        height:"100%",
+        backgroundColor:"grey",
         gap:3,
         width:"90%"
         
@@ -25,7 +25,7 @@ const handlePress = () => {
 const GridComponent = ({min,max}:{min:number,max:number}) => {
 
     const grid = gridNumbers(min,max)
-    return  <View style={styles.container} >{grid.map(current=><Ball key={current} >{current}</Ball>)}</View>
+    return  <View style={styles.container} >{grid.map(current=><Ball key={current} backgroundColor={"green"}>{current}</Ball>)}</View>
         
     
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View , Text, StyleSheet, Pressable} from "react-native"
+import {View , Text, StyleSheet, Pressable, ColorValue} from "react-native"
 
 const BALL_SIZE = 30
 
@@ -23,8 +23,8 @@ const handlePress = (ballNumber:number)=>{
     console.log(`${ballNumber}`)
 }
 
-const Ball = ({children}:{children:number}) => {
-    return <Pressable style={styles.ball} onPress={()=>handlePress(children)} ><Text>{children}</Text></Pressable>;
+const Ball = ({children,backgroundColor="green"}:{children:number , backgroundColor:ColorValue  }) => {
+    return <Pressable style={{...styles.ball,backgroundColor:backgroundColor} } onPress={()=>handlePress(children)} ><Text>{children}</Text></Pressable>;
 }
 
 
