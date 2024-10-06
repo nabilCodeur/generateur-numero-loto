@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import Ball from "./Ball";
+import { StyleSheet, View } from "react-native";
+import BallSelection from "./BallSelection";
 
 const ResultSerie = ({
   listMain,
@@ -13,13 +13,13 @@ const ResultSerie = ({
     <View style={styles.firstContainer}>
       <View style={styles.container}>
         {listMain?.map((element) => (
-          <Ball key={element} backgroundColor={"green"}>{element}</Ball>
+          <BallSelection key={element} backgroundColor={"green"}>{element}</BallSelection>
         ))}
       </View>
 
       <View style={styles.container}>
         {listStar?.map((element) => (
-          <Ball backgroundColor={"blue"} key={element} >{element}</Ball>
+          <BallSelection backgroundColor={"blue"} key={element} >{element}</BallSelection>
         ))}
       </View>
     </View>
