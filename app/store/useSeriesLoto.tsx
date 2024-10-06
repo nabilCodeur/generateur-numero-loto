@@ -8,6 +8,7 @@ import {
 } from "@/constants/numbers";
 import { randomNumber } from "@/utils/randomNumber";
 
+import { ToastAndroid } from "react-native";
 import { create } from "zustand";
 
 type SeriesLoto = {
@@ -39,10 +40,30 @@ const useSeriesLoto = create<SeriesLoto>((set) => ({
       const updatedSet = new Set(state.starSet);
       if (updatedSet.has(payload)) {
         updatedSet.delete(payload);
-        return { starSet: new Set(updatedSet), mainSet: state.mainSet };
+        return {
+          starSet: new Set(updatedSet),
+          mainSet: state.mainSet,
+          showResult: false,
+        };
+      }
+      if (updatedSet.size === LOTO_STAR_SIZE) {
+        ToastAndroid.show(
+          "Une seule étoile peut être sélectionnée",
+          ToastAndroid.SHORT,
+        );
       }
       if (updatedSet.size < LOTO_STAR_SIZE) {
         updatedSet.add(payload);
+      }
+      if (
+        updatedSet.size === LOTO_STAR_SIZE &&
+        state.mainSet.size === LOTO_MAIN_SIZE
+      ) {
+        return {
+          starSet: new Set(updatedSet),
+          mainSet: state.mainSet,
+          showResult: true,
+        };
       }
 
       return { starSet: new Set(updatedSet), mainSet: state.mainSet };
@@ -64,11 +85,29 @@ const useSeriesLoto = create<SeriesLoto>((set) => ({
       const updatedSet = new Set(state.mainSet);
       if (updatedSet.has(payload)) {
         updatedSet.delete(payload);
-        return { mainSet: new Set(updatedSet), starSet: state.starSet };
+        return {
+          mainSet: new Set(updatedSet),
+          starSet: state.starSet,
+          showResult: false,
+        };
       }
-
+      if (updatedSet.size === LOTO_MAIN_SIZE) {
+        ToastAndroid.show(
+          "Cinq étoiles peuvent être sélectionnée",
+          ToastAndroid.SHORT,
+        );
+      }
       if (updatedSet.size < LOTO_MAIN_SIZE) updatedSet.add(payload);
-
+      if (
+        updatedSet.size === LOTO_MAIN_SIZE &&
+        state.mainSet.size === LOTO_STAR_SIZE
+      ) {
+        return {
+          starSet: state.starSet,
+          mainSet: new Set(updatedSet),
+          showResult: true,
+        };
+      }
       return { mainSet: new Set(updatedSet), starSet: state.starSet };
     }),
   getFullMainSet: () =>
@@ -84,12 +123,19 @@ const useSeriesLoto = create<SeriesLoto>((set) => ({
     set((state) => {
       const updatedSetMain = new Set(state.mainSet);
       const updatedSetStar = new Set(state.starSet);
+      if (
+        updatedSetMain.size === LOTO_MAIN_SIZE &&
+        updatedSetStar.size === LOTO_STAR_SIZE
+      ) {
+        ToastAndroid.show("La série est déjà complète", ToastAndroid.SHORT);
+          }
       while (updatedSetMain.size < LOTO_MAIN_SIZE) {
         updatedSetMain.add(randomNumber(LOTO_MIN_MAIN, LOTO_MAX_MAIN));
       }
       while (updatedSetStar.size < LOTO_STAR_SIZE) {
         updatedSetStar.add(randomNumber(LOTO_MIN_STAR, LOTO_MAX_STAR));
       }
+
       return {
         starSet: new Set(updatedSetStar),
         mainSet: new Set(updatedSetMain),
