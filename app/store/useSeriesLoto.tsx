@@ -93,14 +93,14 @@ const useSeriesLoto = create<SeriesLoto>((set) => ({
       }
       if (updatedSet.size === LOTO_MAIN_SIZE) {
         ToastAndroid.show(
-          "Cinq étoiles peuvent être sélectionnée",
+          "Cinq étoiles peuvent être sélectionnées",
           ToastAndroid.SHORT,
         );
       }
       if (updatedSet.size < LOTO_MAIN_SIZE) updatedSet.add(payload);
       if (
         updatedSet.size === LOTO_MAIN_SIZE &&
-        state.mainSet.size === LOTO_STAR_SIZE
+        state.starSet.size === LOTO_STAR_SIZE
       ) {
         return {
           starSet: state.starSet,
@@ -113,6 +113,7 @@ const useSeriesLoto = create<SeriesLoto>((set) => ({
   getFullMainSet: () =>
     set((state) => {
       const updatedSet: Set<number> = new Set(state.mainSet);
+
       while (updatedSet.size < LOTO_MAIN_SIZE) {
         updatedSet.add(randomNumber(LOTO_MIN_MAIN, LOTO_MAX_MAIN));
       }
@@ -123,12 +124,15 @@ const useSeriesLoto = create<SeriesLoto>((set) => ({
     set((state) => {
       const updatedSetMain = new Set(state.mainSet);
       const updatedSetStar = new Set(state.starSet);
+
       if (
         updatedSetMain.size === LOTO_MAIN_SIZE &&
         updatedSetStar.size === LOTO_STAR_SIZE
       ) {
-        ToastAndroid.show("La série est déjà complète", ToastAndroid.SHORT);
-          }
+        updatedSetMain.clear();
+        updatedSetMain.clear();
+      }
+
       while (updatedSetMain.size < LOTO_MAIN_SIZE) {
         updatedSetMain.add(randomNumber(LOTO_MIN_MAIN, LOTO_MAX_MAIN));
       }
