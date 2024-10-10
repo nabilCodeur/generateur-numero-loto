@@ -4,7 +4,6 @@ import SerieResultModel from "./SerieResultModel";
 
 const SerieResults = (): JSX.Element | null => {
   const { mainSet, starSet, showResult } = useSeriesLoto();
-  console.log(showResult);
 
   return showResult ? (
     <View style={styles.container}>
