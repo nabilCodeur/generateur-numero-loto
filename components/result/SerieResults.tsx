@@ -1,4 +1,4 @@
-import useSeriesLoto from "@/app/store/useSeriesLoto";
+import useSeriesLoto from "@/store/useSeriesLoto";
 import { StyleSheet, View } from "react-native";
 import SerieResultModel from "./SerieResultModel";
 

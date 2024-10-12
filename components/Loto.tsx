@@ -2,20 +2,22 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import ActionsButtons from "./ActionsButtons";
 import MainTitle from "./MainTitle";
-import ModalWArning from "./ModalWarning";
+import ModalWarning from "./ModalWarning";
 import SerieResults from "./result/SerieResults";
 import SelectionMainNumber from "./selection/SelectionMainNumber";
 import SelectionStarNumber from "./selection/SelectionStarNumber";
+import TitleStars from "./TitleStars";
 
 const Loto = (): JSX.Element => {
   return (
     <View style={styles.app}>
       <MainTitle />
       <SelectionMainNumber />
-      <ModalWArning />
+      <TitleStars />
       <SelectionStarNumber />
       <ActionsButtons />
       <SerieResults />
+      <ModalWarning />
     </View>
   );
 };

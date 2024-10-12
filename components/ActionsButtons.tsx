@@ -1,4 +1,4 @@
-import useSeriesLoto from "@/app/store/useSeriesLoto";
+import useSeriesLoto from "@/store/useSeriesLoto";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 
 const ActionsButtons = () => {

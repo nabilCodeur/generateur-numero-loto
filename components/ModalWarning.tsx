@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Modal, StyleSheet, Text, View } from "react-native";
 
-const ModalWArning = () => {
+const ModalWarning = () => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(true);
 
   const handleClose = () => {
@@ -16,10 +16,11 @@ const ModalWArning = () => {
     >
       <View style={styles.mainContainer}>
         <View style={styles.secondContainer}>
-          <Text style={styles.text}>
+          <Text style={styles.textWelcome}>
             Bienvenue dans l'app qui génère pour vous des numéros à jouer au
             loto.
           </Text>
+          <Text style={styles.textGoodLuck}>Bonne chance !</Text>
           <Text>
             Les jeux d'argents sont réservés aux personnes de plus de 18 ans
           </Text>
@@ -37,7 +38,6 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-
     padding: 5,
     borderColor: "black",
     borderWidth: 1,
@@ -48,9 +48,14 @@ const styles = StyleSheet.create({
     display: "flex",
     rowGap: 10,
   },
-  text: {
+  textWelcome: {
     fontWeight: "700",
+    fontSize: 22,
+  },
+  textGoodLuck: {
+    fontWeight: "bold",
+    fontSize: 22,
   },
 });
 
-export default ModalWArning;
+export default ModalWarning;
