@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 const MainTitle = () => {
   return (
     <View>
-      <Text style={styles.mainTitle}>Grille 2</Text>
+      <Text style={styles.mainTitle}>Grille</Text>
       <Text style={styles.subTitle}>
         Sélectionner le dé et/ou vos numéros fétiches
       </Text>
