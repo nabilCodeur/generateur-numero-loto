@@ -20,11 +20,11 @@ const ModalWarning = () => {
             Bienvenue dans l'app qui génère pour vous des numéros à jouer au
             loto.
           </Text>
-          <Text style={styles.textGoodLuck}>Bonne chance !</Text>
           <Text>
             Les jeux d'argents sont réservés aux personnes de plus de 18 ans
           </Text>
           <Text>Cette application n'est pas affiliée à la FDJ.</Text>
+          <Text style={styles.textGoodLuck}>Bonne chance !</Text>
           <Button title="Fermer" onPress={handleClose} />
         </View>
       </View>
@@ -40,13 +40,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 5,
     borderColor: "black",
-    borderWidth: 1,
+    borderWidth: 2,
   },
   secondContainer: {
     maxHeight: "80%",
     maxWidth: "80%",
     display: "flex",
     rowGap: 10,
+    borderColor: "black",
+    borderWidth: 1,
+    borderStyle: "solid",
+    padding: 16,
   },
   textWelcome: {
     fontWeight: "700",
