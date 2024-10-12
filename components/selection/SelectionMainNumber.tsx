@@ -1,5 +1,5 @@
-import useSeriesLoto from "@/app/store/useSeriesLoto";
 import { LOTO_MAX_MAIN, LOTO_MIN_MAIN } from "@/constants/numbers";
+import useSeriesLoto from "@/store/useSeriesLoto";
 import { gridBalls } from "@/utils/randomNumber";
 import { ColorValue, StyleSheet, View } from "react-native";
 import BallSelection from "../BallSelection";
