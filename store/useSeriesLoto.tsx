@@ -6,7 +6,7 @@ import {
   LOTO_MIN_STAR,
   LOTO_STAR_SIZE,
 } from "@/constants/numbers";
-import { randomNumber } from "@/utils/randomNumber";
+import { randomNumber } from "@/utils/numbers";
 
 import { ToastAndroid } from "react-native";
 import { create } from "zustand";
