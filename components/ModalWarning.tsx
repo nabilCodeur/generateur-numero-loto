@@ -22,9 +22,11 @@ const ModalWarning = () => {
           <Text>
             Les jeux d'argents sont réservés aux personnes de plus de 18 ans
           </Text>
-          <Text>Cette application n'est pas affiliée à la FDJ</Text>
+
+          <Text>Cette application n'est pas affiliée à la FDJ.</Text>
           <Text style={styles.textGoodLuck}>Bonne chance !</Text>
-          <Button title="Fermer" onPress={handleClose}  />
+          <Button title="Fermer" onPress={handleClose} />
+
         </View>
       </View>
     </Modal>
