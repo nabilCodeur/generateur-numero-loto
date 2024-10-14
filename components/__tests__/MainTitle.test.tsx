@@ -1,9 +1,12 @@
-import { render } from "@testing-library/react-native";
+import { render, screen } from "@testing-library/react-native";
+
+import "@testing-library/react-native/extend-expect";
 import MainTitle from "../MainTitle";
 
-describe("MAin title", () => {
-  test("title should be present", () => {
-    const { getByText } = render(<MainTitle />);
-    getByText(/Sélectionner le dé et\/ou vos numéros fétiches/);
-  });
+describe("Main title component", () => {
+  test("subtitle should be present", () => {
+     render(<MainTitle />);
+    expect(
+      screen.getByRole("text",{name:/Sélectionner le dé et\/ou vos numéros fétiches/i}),
+    ).toBeOnTheScreen();
 });

@@ -1,4 +1,4 @@
-import { gridBalls } from "@/utils/randomNumber";
+import { gridBalls } from "@/utils/numbers";
 import { ColorValue, StyleSheet, View } from "react-native";
 import BallSelection from "./BallSelection";
 

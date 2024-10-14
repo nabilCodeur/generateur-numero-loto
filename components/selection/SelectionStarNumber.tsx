@@ -1,6 +1,6 @@
 import { LOTO_MAX_STAR, LOTO_MIN_STAR } from "@/constants/numbers";
 import useSeriesLoto from "@/store/useSeriesLoto";
-import { gridBalls } from "@/utils/randomNumber";
+import { gridBalls } from "@/utils/numbers";
 import { ColorValue, StyleSheet, View } from "react-native";
 import BallSelection from "../BallSelection";
 
