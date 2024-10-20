@@ -7,6 +7,7 @@ const SerieResults = (): JSX.Element | null => {
 
   return showResult ? (
     <View style={styles.container}>
+      <View style={{display:"flex",flexDirection:"row"}}>
       <SerieResultModel
         backgroundColor={"blue"}
         set={mainSet}
@@ -16,7 +17,9 @@ const SerieResults = (): JSX.Element | null => {
         backgroundColor={"red"}
         set={starSet}
         textColor={"white"}
-      />
+        />
+        </View>
+
     </View>
   ) : null;
 };
