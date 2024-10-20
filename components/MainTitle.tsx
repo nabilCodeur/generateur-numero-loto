@@ -5,7 +5,7 @@ const MainTitle = () => {
     <View>
       <Text style={styles.mainTitle}>Grille</Text>
       <Text style={styles.subTitle}>
-        Sélectionner le dé et/ou vos numéros fétiches
+        Sélectionner le dé et/ou vos numéros fétiches 2
       </Text>
     </View>
   );
